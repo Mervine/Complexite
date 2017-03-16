@@ -53,6 +53,7 @@ public class Balayage {
 	}
 	
 	public void comparaison(){
+		triParTas();
 		for(int i = 0 ; i < l.size() ; i++){
 			for(int j = i+1 ; j < l.size() ; j++){
 				if(l.get(j).x - l.get(j).rayon > l.get(i).x + l.get(i).rayon  ){
