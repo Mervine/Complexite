@@ -1,73 +1,66 @@
 import java.util.ArrayList;
 
 public class Main {
-
-	public static void jeu1 (int n){
-		ArrayList<Cercle> j1 = new ArrayList<Cercle>();
+	
+	public static ArrayList<Integer> jeu (int n, int type){
+		ArrayList<Integer> resultats = new ArrayList<Integer>();
+		ArrayList<Cercle> j = new ArrayList<Cercle>();
 		double x,y;
 		for(int i = 0 ; i < n ; i++){
 			x = Math.random()*i;
 			y = Math.random()*i;
-			j1.add(new Cercle(x,y,1));
+			if (type == 0){
+				j.add(new Cercle(x,y,1));
+			}
+			if (type == 1){
+				j.add(new Cercle(x,y, Math.random()*Math.sqrt(i)));
+			}
+			if (type == 2){
+				j.add(new Cercle(x,y,Math.random()*i));
+			}
 		}
 		ToutesLesPaires test1 = new ToutesLesPaires();
-		test1.addCercle(j1);
+		test1.addCercle(j);
 		Balayage test2 = new Balayage();
-		test2.addCercle(j1);	
+		test2.addCercle(j);	
 		
-		System.out.println("Croisement de TouteLesPaires");
+		//System.out.println("Croisement de TouteLesPaires");
 		test1.comparaison();
-		System.out.println("\nCroisement de Balayage");
+		//System.out.println("\nCroisement de Balayage");
 		test2.comparaison();
 		
-		System.out.println("\nJeu 1 ->  n = "+n+" ;\nToutesLesPaires : H(n) = "+test1.result.size()+" ;\nBalayage : H(n) = "+test2.result.size()+" ;");
+		resultats.add(test1.result.size());
+		resultats.add(test2.result.size());
+		
+		return resultats;
 	}
 	
-	public static void jeu2 (int n){
-		ArrayList<Cercle> j2 = new ArrayList<Cercle>();
-		double x,y,r;
-		for(int i = 0 ; i <= n ; i++){
-			x = Math.random()*i;
-			y = Math.random()*i;
-			r = Math.random()*Math.sqrt(n);
-			j2.add(new Cercle(x,y,r));
+	public static void testGlobal(int n){
+		int[][] moy = new int[3][2];
+		for (int i = 0 ; i < 3 ; i++){
+			moy[i][0]= 0;
+			moy[i][1]= 0;
 		}
-		
-		ToutesLesPaires test1 = new ToutesLesPaires();
-		test1.addCercle(j2);
-		Balayage test2 = new Balayage();
-		test2.addCercle(j2);
-		
-		test1.comparaison();
-		test2.comparaison();
-		
-		System.out.println("Jeu 2 ->  n = "+n+" ;\nToutesLesPaires : H(n) = "+test1.result.size()+" ;\nBalayage : H(n) = "+test2.result.size()+" ;");
-	}
-
-	public static void jeu3 (int n){
-		ArrayList<Cercle> j3 = new ArrayList<Cercle>();
-		double x,y,r;
-		for(int i = 0 ; i <= n ; i++){
-			x = Math.random()*i;
-			y = Math.random()*i;
-			r = Math.random()*i;
-			j3.add(new Cercle(x,y,r));
+		for (int i = 0 ; i < 1000 ; i++){
+			ArrayList<Integer> val = new ArrayList<Integer>();
+			for (int j = 0 ; j < 3 ; j++){
+				val.addAll(jeu(n,j));
+				moy[j][0]+=val.get(0);
+				moy[j][1]+=val.get(1);
+				val.clear();
+			}
 		}
-		ToutesLesPaires test1 = new ToutesLesPaires();
-		test1.addCercle(j3);
-		Balayage test2 = new Balayage();
-		test2.addCercle(j3);
-	
-		test1.comparaison();
-		test2.comparaison();
-		
-		System.out.println("Jeu 3 ->  n = "+n+" ;\nToutesLesPaires : H(n) = "+test1.result.size()+" ;\nBalayage : H(n) = "+test2.result.size()+" ;");
+		System.out.println("\nValeur moyenne du jeu 1 : (n = "+n+")\n - ToutesLesPaires : H(n) = "+moy[0][0]/1000+" ;\n - Balayage : H(n) = "+moy[0][1]/1000+" ;");
+		System.out.println("\nValeur moyenne du jeu 2 : (n = "+n+")\n - ToutesLesPaires : H(n) = "+moy[1][0]/1000+" ;\n - Balayage : H(n) = "+moy[1][1]/1000+" ;");
+		System.out.println("\nValeur moyenne du jeu 3 : (n = "+n+")\n - ToutesLesPaires : H(n) = "+moy[2][0]/1000+" ;\n - Balayage : H(n) = "+moy[2][1]/1000+" ;");
 	}
-	
 	
 	public static void main(String[] args) {
-		jeu1(100);
-
+		//jeu(100,1);
+		
+		testGlobal(100);
+		
+		
 		/*ToutesLesPaires test1 = new ToutesLesPaires();
 		test1.addCercle(new Cercle (3,3,2));
 		test1.addCercle(new Cercle (4,7,3));
@@ -90,19 +83,10 @@ public class Main {
 		test2.addCercle(new Cercle (9,13,1));
 		
 		
-		
-		test2.triParTas();
-		
-		for (int i = 0 ; i < test1.l.size() ; i++){
-			System.out.println(test2.l.get(i).num+" /// "+(test2.l.get(i).getX()-test2.l.get(i).getRayon()));
-		}
-		System.out.println("");
-		System.out.println("Résultat du balayage :");
+		System.out.println("\nRésultat du balayage :");
 		test2.comparaison();
 		
 		System.out.println("Jeu 1 ->  n = 6 ;\nToutesLesPaires : H(n) = "+test1.result.size()+" ;\nBalayage : H(n) = "+test2.result.size()+" ;");
 		*/
-
 	}
-
 }

@@ -39,7 +39,6 @@ public class Cercle implements Comparable<Cercle> {
 		return num;
 	}
 
-	@Override
 	public int compareTo(Cercle c) {
 		if (c.getX()-c.getRayon() < this.getX()- this.getRayon()){
 			return 1;
