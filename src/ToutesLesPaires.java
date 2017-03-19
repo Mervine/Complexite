@@ -13,6 +13,10 @@ public class ToutesLesPaires {
 		l.add(c);
 	}
 	
+	public void addCercle(ArrayList<Cercle> c) {
+		l.addAll(c);
+	}
+	
 	public double distance(Cercle c1, Cercle c2){
 		return Math.sqrt( Math.pow(c2.getX()- c1.getX(), 2) + Math.pow(c2.getY()- c1.getY(), 2) );
 	}
@@ -34,4 +38,6 @@ public class ToutesLesPaires {
 			}
 		}
 	}
+
+	
 }
