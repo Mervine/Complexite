@@ -13,6 +13,10 @@ public class ToutesLesPaires {
 		l.add(c);
 	}
 	
+	public void addCercle(ArrayList<Cercle> c) {
+		l.addAll(c);
+	}
+	
 	public double distance(Cercle c1, Cercle c2){
 		return Math.sqrt( Math.pow(c2.getX()- c1.getX(), 2) + Math.pow(c2.getY()- c1.getY(), 2) );
 	}
@@ -25,7 +29,7 @@ public class ToutesLesPaires {
 			j = i + 1;
 			while( j<l.size() ){
 				if(distance(l.get(i),l.get(j)) < l.get(i).getRayon() + l.get(j).getRayon()){
-					System.out.println("Le cercle ["+ l.get(i).getNum() +"] croise ["+ l.get(j).getNum() +"]");
+					//System.out.println("Le cercle ["+ l.get(i).getNum() +"] croise ["+ l.get(j).getNum() +"]");
 					paire.add(l.get(i));
 					paire.add(l.get(j));
 					result.add(paire);
@@ -34,4 +38,6 @@ public class ToutesLesPaires {
 			}
 		}
 	}
+
+	
 }
