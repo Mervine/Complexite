@@ -1,3 +1,5 @@
+import java.io.File;
+import java.io.FileWriter;
 import java.util.ArrayList;
 
 public class Main {
@@ -24,24 +26,25 @@ public class Main {
 		Balayage test2 = new Balayage();
 		test2.addCercle(j);	
 		
-		//System.out.println("Croisement de TouteLesPaires");
 		test1.comparaison();
-		//System.out.println("\nCroisement de Balayage");
 		test2.comparaison();
 		
-		resultats.add(test1.result.size());
-		resultats.add(test2.result.size());
+		//resultats.add(test1.result.size());
+		//resultats.add(test2.result.size());
+		
+		resultats.add((int) test1.time);
+		resultats.add((int) test2.time);
 		
 		return resultats;
 	}
 	
-	public static void testGlobal(int n){
+	public static String testGlobal(int n){
 		int[][] moy = new int[3][2];
 		for (int i = 0 ; i < 3 ; i++){
 			moy[i][0]= 0;
 			moy[i][1]= 0;
 		}
-		for (int i = 0 ; i < 1000 ; i++){
+		for (int i = 0 ; i < 500 ; i++){
 			ArrayList<Integer> val = new ArrayList<Integer>();
 			for (int j = 0 ; j < 3 ; j++){
 				val.addAll(jeu(n,j));
@@ -50,16 +53,29 @@ public class Main {
 				val.clear();
 			}
 		}
-		System.out.println("\nValeur moyenne du jeu 1 : (n = "+n+")\n - ToutesLesPaires : H(n) = "+moy[0][0]/1000+" ;\n - Balayage : H(n) = "+moy[0][1]/1000+" ;");
-		System.out.println("\nValeur moyenne du jeu 2 : (n = "+n+")\n - ToutesLesPaires : H(n) = "+moy[1][0]/1000+" ;\n - Balayage : H(n) = "+moy[1][1]/1000+" ;");
-		System.out.println("\nValeur moyenne du jeu 3 : (n = "+n+")\n - ToutesLesPaires : H(n) = "+moy[2][0]/1000+" ;\n - Balayage : H(n) = "+moy[2][1]/1000+" ;");
+		
+		return moy[0][0]/500+" "+moy[0][1]/500+" "+moy[1][0]/500+" "+moy[1][1]/500+" "+moy[2][0]/500+" "+moy[2][1]/500;
+		
 	}
 	
 	public static void main(String[] args) {
-		//jeu(100,1);
 		
-		testGlobal(100);
-		
+		try{
+			
+			File ff=new File("resultat.txt"); // définir l'arborescence
+			ff.createNewFile();
+			
+			FileWriter ffw=new FileWriter(ff);
+			
+			ffw.write("nDisque jeu1_TTP jeu1Bal jeu2_TTP jeu2Bal jeu3_TTP jeu3Bal");
+			
+			for (int i = 1 ; i <= 2580 ; i++){
+				System.out.println("Etape : "+i);
+				ffw.write("\n");
+				ffw.write(i+" "+testGlobal(i));
+			}
+			ffw.close(); // fermer le fichier à la fin des traitements
+		} catch (Exception e) {}
 		
 		/*ToutesLesPaires test1 = new ToutesLesPaires();
 		test1.addCercle(new Cercle (3,3,2));

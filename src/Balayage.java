@@ -4,6 +4,7 @@ import java.util.Collections;
 public class Balayage {
 	ArrayList<Cercle> l;
 	ArrayList<ArrayList<Cercle>> result;
+	long time;
 	
 	public Balayage(){
 		l = new ArrayList<Cercle>();
@@ -27,6 +28,8 @@ public class Balayage {
 	}
 	
 	public void comparaison(){
+		long debut = System.nanoTime()/1000;
+		
 		result.clear();
 		trier();
 		for(int i = 0 ; i < l.size() ; i++){
@@ -46,5 +49,7 @@ public class Balayage {
 				}
 			}
 		}
+		long fin = System.nanoTime()/1000;
+		this.time = fin - debut;
 	}
 }
