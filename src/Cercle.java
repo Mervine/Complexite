@@ -13,15 +13,6 @@ public class Cercle implements Comparable<Cercle> {
 		this.num = i;
 		i++;
 	}
-	
-	//constructeur du cercle généré aléatoirement
-	/*public Cercle(double rayonMin, double rayonMax, int posRange) {
-		this.x = Math.random()*posRange;
-		this.y = Math.random()*posRange;
-		this.rayon = rayonMin + Math.random()*rayonMax;
-		this.num = i;
-		i++;
-	}*/
 
 	public double getX() {
 		return x;

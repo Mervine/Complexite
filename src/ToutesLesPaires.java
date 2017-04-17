@@ -3,6 +3,7 @@ import java.util.ArrayList;
 public class ToutesLesPaires {
 	ArrayList<Cercle> l;
 	ArrayList<ArrayList<Cercle>> result;
+	long time;
 	
 	public ToutesLesPaires(){
 		l = new ArrayList<Cercle>();
@@ -23,6 +24,7 @@ public class ToutesLesPaires {
 	
 	public void comparaison() {
 		result.clear();
+		long debut = System.nanoTime()/1000;
 		int j;
 		for(int i = 0 ; i < l.size() ; i++){
 			ArrayList<Cercle> paire = new ArrayList<Cercle>();
@@ -37,6 +39,8 @@ public class ToutesLesPaires {
 				j++;
 			}
 		}
+		long fin = System.nanoTime()/1000;
+		this.time = fin - debut;
 	}
 
 	
