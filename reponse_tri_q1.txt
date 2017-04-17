@@ -1,1 +1,0 @@
-Pour notre tri, nous avons utilisé un tri par fusion implémenté dans la classe Collections de java et de complexité nlog(n) d'après la documentation ( https://docs.oracle.com/javase/7/docs/api/java/util/Collections.html#sort(java.util.List) )
