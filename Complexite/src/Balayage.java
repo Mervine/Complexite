@@ -41,7 +41,7 @@ public class Balayage {
 				else{
 					//Tester si les disques se croisent
 					if(distance(l.get(i),l.get(j)) < l.get(i).getRayon() + l.get(j).getRayon()){
-						//System.out.println("Le cercle ["+ l.get(i).getNum() +"] croise ["+ l.get(j).getNum() +"]");
+						//System.out.println("Le disque ["+ l.get(i).getNum() +"] croise ["+ l.get(j).getNum() +"]");
 						paire.add(l.get(i));
 						paire.add(l.get(j));
 						result.add(paire);

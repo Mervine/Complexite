@@ -31,7 +31,7 @@ public class ToutesLesPaires {
 			j = i + 1;
 			while( j<l.size() ){
 				if(distance(l.get(i),l.get(j)) < l.get(i).getRayon() + l.get(j).getRayon()){
-					//System.out.println("Le cercle ["+ l.get(i).getNum() +"] croise ["+ l.get(j).getNum() +"]");
+					//System.out.println("Le disque ["+ l.get(i).getNum() +"] croise ["+ l.get(j).getNum() +"]");
 					paire.add(l.get(i));
 					paire.add(l.get(j));
 					result.add(paire);

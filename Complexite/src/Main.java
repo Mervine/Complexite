@@ -29,11 +29,13 @@ public class Main {
 		test1.comparaison();
 		test2.comparaison();
 		
-		//resultats.add(test1.result.size());
-		//resultats.add(test2.result.size());
+		//test de croisement
+		resultats.add(test1.result.size());
+		resultats.add(test2.result.size());
 		
-		resultats.add((int) test1.time);
-		resultats.add((int) test2.time);
+		//Test de temps
+		//resultats.add((int) test1.time);
+		//resultats.add((int) test2.time);
 		
 		return resultats;
 	}
@@ -53,12 +55,11 @@ public class Main {
 				val.clear();
 			}
 		}
-		
 		return moy[0][0]/500+" "+moy[0][1]/500+" "+moy[1][0]/500+" "+moy[1][1]/500+" "+moy[2][0]/500+" "+moy[2][1]/500;
-		
 	}
 	
 	public static void main(String[] args) {
+		
 		
 		try{
 			
@@ -69,15 +70,25 @@ public class Main {
 			
 			ffw.write("nDisque jeu1_TTP jeu1Bal jeu2_TTP jeu2Bal jeu3_TTP jeu3Bal");
 			
-			for (int i = 1 ; i <= 2580 ; i++){
-				System.out.println("Etape : "+i);
+			
+			//Test pour les i premieres valeurs
+			/*for (int i = 1 ; i <= 2580 ; i++){
 				ffw.write("\n");
 				ffw.write(i+" "+testGlobal(i));
-			}
+			}*/
+			
+			//test unitaire global
+			ffw.write("\n");
+			ffw.write(50+" "+testGlobal(50));
+			
 			ffw.close(); // fermer le fichier à la fin des traitements
 		} catch (Exception e) {}
 		
-		/*ToutesLesPaires test1 = new ToutesLesPaires();
+		
+		
+		/*
+		//Test de croisement
+		ToutesLesPaires test1 = new ToutesLesPaires();
 		test1.addCercle(new Cercle (3,3,2));
 		test1.addCercle(new Cercle (4,7,3));
 		test1.addCercle(new Cercle (10,5,4));
@@ -101,8 +112,7 @@ public class Main {
 		
 		System.out.println("\nRésultat du balayage :");
 		test2.comparaison();
-		
-		System.out.println("Jeu 1 ->  n = 6 ;\nToutesLesPaires : H(n) = "+test1.result.size()+" ;\nBalayage : H(n) = "+test2.result.size()+" ;");
 		*/
+		
 	}
 }
